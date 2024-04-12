@@ -1,0 +1,43 @@
+<div class="border border-2 p-4">
+    <div class="flex flex-col w-full">
+        <div class="flex flex-row mb-2">
+            <div class="w-3/12"><span>Title</span></div>
+            <div class="w-9/12"><span><%= book.title %></span></div>
+        </div>
+
+        <div class="flex flex-row mb-2">
+            <div class="w-3/12"><span>ISBN13</span></div>
+            <div class="w-9/12"><span><%= book.isbn_13 %></span></div>
+        </div>
+
+        <div class="flex flex-row mb-2">
+            <div class="w-3/12"><span>ISBN10 (Converted)</span></div>
+            <div class="w-9/12"><span><%= Isbn.convert_isbn(book.isbn_13) %></span></div>
+        </div>
+
+        <div class="flex flex-row mb-2">
+            <div class="w-3/12"><span>List Price</span></div>
+            <div class="w-9/12"><span><%= book.list_price %></span></div>
+        </div>
+
+        <div class="flex flex-row mb-2">
+            <div class="w-3/12"><span>Publication Year</span></div>
+            <div class="w-9/12"><span><%= book.publication_year %></span></div>
+        </div>
+
+        <div class="flex flex-row mb-2">
+            <div class="w-3/12"><span>Publisher</span></div>
+            <div class="w-9/12"><span><%= book.publisher.name %></span></div>
+        </div>
+
+        <div class="flex flex-row mb-2">
+            <div class="w-3/12"><span>Edition</span></div>
+            <div class="w-9/12"><span><%= book.edition %></span></div>
+        </div>
+
+        <div class="flex flex-row mb-2">
+            <div class="w-3/12"><span>Author/s</span></div>
+            <div class="w-9/12"><span><%= book.authors.map { |author| author.full_name } %></span></div>
+        </div>
+    </div>
+</div>

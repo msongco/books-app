@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Books App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= favicon_link_tag asset_path("icons8-book.png") %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application" %>
+  </head>
+
+  <body class="bg-gradient-to-r from-purple-300 to-pink-300">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
+        <div class="flex flex-row items-center">
+          <%= link_to root_path do %>
+            <%= image_tag("icons8-book.png") %>
+          <% end %>
+          <%= link_to "BooksApp", root_path, class: "text-2xl font-semibold whitespace-nowrap dark:text-white" %>
+        </div>
+
+        <% unless current_page?(new_book_path) %>
+          <%= link_to "Add Book", new_book_path, class: 'text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
+        <% end %>
+      </div>
+    </nav>
+
+    <%= yield %>
+  </body>
+</html>

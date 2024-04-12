@@ -1,0 +1,49 @@
+
+<div class="w-10/12 p-4 mx-auto mt-6 border bg-white">
+    <div class="text-center">
+        <span class="text-4xl font-bold">Book Details</span>
+    </div>
+    <%= form_for @book do |f| %>
+        <div class="flex flex-col w-full mb-4">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: "p-3 bg-gray-50 border border-purple-500 text-gray-900 text-sm rounded-lg w-full focus:ring-pink-500 focus:border-pink-500 mr-4" %>
+        </div>
+            
+        <div class="flex flex-col w-full mb-4">
+            <%= f.label :isbn_13, "ISBN13", class: "block mb-2 text-base font-medium text-gray-900" %>
+            <%= f.text_field :isbn_13, class: "p-3 bg-gray-50 border border-purple-500 text-gray-900 text-sm rounded-lg w-full focus:ring-pink-500 focus:border-pink-500" %>
+        </div>
+
+        <div class="flex flex-row mb-4">
+            <div class="flex flex-col w-6/12 mr-4">
+                <%= f.label :list_price %>
+                <%= f.number_field :list_price, step: 0.1, class: "p-3 bg-gray-50 border border-purple-500 text-gray-900 text-sm rounded-lg w-full focus:ring-pink-500 focus:border-pink-500" %>
+            </div>
+
+            <div class="flex flex-col w-6/12">
+                <%= f.label :publication_year %>
+                <%= f.number_field :publication_year, class: "p-3 bg-gray-50 border border-purple-500 text-gray-900 text-sm rounded-lg w-full focus:ring-pink-500 focus:border-pink-500" %>
+            </div>
+        </div>
+
+        <div class="flex flex-col w-full mb-4">
+            <%= f.label :publisher_id, "Publisher" %>
+            <%= f.collection_select :publisher_id, @publishers, :id, :name, {}, { class: "p-3 bg-gray-50 border border-purple-500 text-gray-900 text-sm rounded-lg w-full focus:ring-pink-500 focus:border-pink-500" } %>
+        </div>
+
+        <div class="flex flex-col w-full mb-4">
+            <%= f.label :edition %>
+            <%= f.text_field :edition, class: "p-3 bg-gray-50 border border-purple-500 text-gray-900 text-sm rounded-lg w-full focus:ring-pink-500 focus:border-pink-500" %>
+        </div>
+
+        <div class="flex flex-col w-full mb-4">
+            <label>Author</label>
+            <%= select_tag "author", options_from_collection_for_select(@authors, :id, :full_name), class: "p-3 bg-gray-50 border border-purple-500 text-gray-900 text-sm rounded-lg w-full focus:ring-pink-500 focus:border-pink-500" %>
+        </div>
+
+        <div class="flex flex-row w-full">
+            <%= f.submit "Save", class: "w-3/12 text-white bg-blue-500 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-purple-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" %>
+            <%= link_to "Cancel", new_book_path, class: 'w-3/12 text-white bg-red-500 hover:bg-red-200 focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
+        </div>
+    <% end %>
+</div>
